@@ -20,10 +20,10 @@ function App() {
     },
   ]);
 
-  let name = "";
-  let email = "";
-  let phone = "";
-  let address = "";
+  let name = generalInfo.name;
+  let email = generalInfo.email;
+  let phone = generalInfo.phone;
+  let address = generalInfo.address;
 
   function handleChange(e) {
     switch (e.target.name) {
