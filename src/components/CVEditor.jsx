@@ -1,9 +1,13 @@
 // Should be given a prop by App
-function CVEditor({ onChange, onSubmit }) {
+function CVEditor({ onChange, onSubmit, addEducation, educationInfo }) {
   return (
     <form onSubmit={onSubmit}>
       <GeneralSection onChange={onChange} />
-      <EducationSection onChange={onChange} />
+      <EducationSection
+        onChange={onChange}
+        addEducation={addEducation}
+        educationInfo={educationInfo}
+      />
 
       <button>Submit</button>
     </form>
@@ -46,39 +50,53 @@ function GeneralSection({ onChange }) {
   );
 }
 
-function EducationSection({ onChange }) {
+function EducationSection({ onChange, addEducation, educationInfo }) {
   return (
-    <>
+    <div>
       <h2>Education Information</h2>
-      <CVField
-        labelName="school"
-        fieldName="School Name"
-        dataType="text"
-        onChange={onChange}
-        name="school"
-      />
-      <CVField
-        labelName="degree"
-        fieldName="Degree"
-        dataType="text"
-        onChange={onChange}
-        name="degree"
-      />
-      <CVField
-        labelName="school-start-date"
-        fieldName="Start Date"
-        dataType="text"
-        onChange={onChange}
-        name="school-start-date"
-      />
-      <CVField
-        labelName="school-end-date"
-        fieldName="End Date"
-        dataType="text"
-        onChange={onChange}
-        name="school-end-date"
-      />
-    </>
+
+      <div>
+        {educationInfo.map((item) => (
+          <div key={item.uniqueId}>
+            <CVField
+              labelName="school"
+              fieldName="School Name"
+              dataType="text"
+              onChange={onChange}
+              name="school"
+              dataid={item.uniqueId}
+            />
+            <CVField
+              labelName="degree"
+              fieldName="Degree"
+              dataType="text"
+              onChange={onChange}
+              name="degree"
+              dataid={item.uniqueId}
+            />
+            <CVField
+              labelName="school-start-date"
+              fieldName="Start Date"
+              dataType="text"
+              onChange={onChange}
+              name="school-start-date"
+              dataid={item.uniqueId}
+            />
+            <CVField
+              labelName="school-end-date"
+              fieldName="End Date"
+              dataType="text"
+              onChange={onChange}
+              name="school-end-date"
+              dataid={item.uniqueId}
+            />
+          </div>
+        ))}
+      </div>
+      <button type="button" onClick={addEducation}>
+        Add School
+      </button>
+    </div>
   );
 }
 /*
@@ -107,11 +125,24 @@ function PracticalSection() {
   );
 }
 */
-function CVField({ labelName, fieldName, dataType, onChange, name }) {
+function CVField({
+  labelName,
+  fieldName,
+  dataType,
+  onChange,
+  name,
+  dataid = "",
+}) {
   return (
     <>
       <label htmlFor={labelName}>{fieldName}</label>
-      <input type={dataType} id={labelName} onChange={onChange} name={name} />
+      <input
+        type={dataType}
+        id={labelName}
+        onChange={onChange}
+        name={name}
+        data-id={dataid}
+      />
     </>
   );
 }
