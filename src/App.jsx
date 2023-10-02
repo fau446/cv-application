@@ -107,8 +107,7 @@ function App() {
     e.preventDefault();
   }
 
-  function submitForm(e) {
-    e.preventDefault();
+  function setChange() {
     setGeneralInfo({
       name: name,
       email: email,
@@ -118,6 +117,11 @@ function App() {
 
     setEducationInfo(newEducationInfo);
     setPracticalInfo(newPracticalInfo);
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    setChange();
   }
 
   function addEducation() {
@@ -144,6 +148,16 @@ function App() {
     setPracticalInfo(newPracticalInfo);
   }
 
+  function removeEducation(e) {
+    for (let i = 0; i < newEducationInfo.length; i++) {
+      if (e.target.dataset.id === newEducationInfo[i].uniqueId) {
+        newEducationInfo.splice(i, 1);
+        console.log(newEducationInfo);
+        setChange();
+      }
+    }
+  }
+
   return (
     <>
       <CVEditor
@@ -153,6 +167,7 @@ function App() {
         addPractical={addPractical}
         educationInfo={educationInfo}
         practicalInfo={practicalInfo}
+        removeEducation={removeEducation}
       />
       <CV
         generalInfo={generalInfo}
