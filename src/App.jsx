@@ -22,12 +22,24 @@ function App() {
     },
   ]);
 
+  const [practicalInfo, setPracticalInfo] = useState([
+    {
+      company: "",
+      position: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+      uniqueId: uuidv4(),
+    },
+  ]);
+
   let name = generalInfo.name;
   let email = generalInfo.email;
   let phone = generalInfo.phone;
   let address = generalInfo.address;
 
   let newEducationInfo = educationInfo;
+  let newPracticalInfo = practicalInfo;
 
   function handleChange(e) {
     switch (
@@ -50,8 +62,6 @@ function App() {
     // for EducationSection
     for (let i = 0; i < newEducationInfo.length; i++) {
       if (e.target.dataset.id === newEducationInfo[i].uniqueId) {
-        // console.log("Same ID!");
-        // console.log(e.target.name);
         switch (e.target.name) {
           case "school":
             newEducationInfo[i].schoolName = e.target.value;
@@ -70,7 +80,29 @@ function App() {
       }
     }
 
-    // setEducationInfo(newEducationInfo);
+    // for PracticalSection
+    for (let i = 0; i < newPracticalInfo.length; i++) {
+      if (e.target.dataset.id === newPracticalInfo[i].uniqueId) {
+        switch (e.target.name) {
+          case "company":
+            newPracticalInfo[i].company = e.target.value;
+            break;
+          case "position":
+            newPracticalInfo[i].position = e.target.value;
+            break;
+          case "start-date-practical":
+            newPracticalInfo[i].startDate = e.target.value;
+            break;
+          case "end-date-practical":
+            newPracticalInfo[i].endDate = e.target.value;
+            break;
+          case "location":
+            newPracticalInfo[i].location = e.target.value;
+            break;
+        }
+        break;
+      }
+    }
 
     e.preventDefault();
   }
@@ -85,6 +117,7 @@ function App() {
     });
 
     setEducationInfo(newEducationInfo);
+    setPracticalInfo(newPracticalInfo);
   }
 
   function addEducation() {
@@ -96,11 +129,19 @@ function App() {
       uniqueId: uuidv4(),
     };
     newEducationInfo = [...educationInfo, newItem];
-    console.log("Tets");
-    console.log(newEducationInfo);
     setEducationInfo(newEducationInfo);
-    // console.log(educationInfo[0]);
-    // console.log(educationInfo[1]);
+  }
+
+  function addPractical() {
+    const newItem = {
+      company: "",
+      position: "",
+      startDate: "",
+      endDate: "",
+      uniqueId: uuidv4(),
+    };
+    newPracticalInfo = [...practicalInfo, newItem];
+    setPracticalInfo(newPracticalInfo);
   }
 
   return (
@@ -109,9 +150,15 @@ function App() {
         onChange={handleChange}
         onSubmit={submitForm}
         addEducation={addEducation}
+        addPractical={addPractical}
         educationInfo={educationInfo}
+        practicalInfo={practicalInfo}
       />
-      <CV generalInfo={generalInfo} educationInfo={educationInfo} />
+      <CV
+        generalInfo={generalInfo}
+        educationInfo={educationInfo}
+        practicalInfo={practicalInfo}
+      />
     </>
   );
 }

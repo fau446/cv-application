@@ -1,4 +1,4 @@
-function CV({ generalInfo, educationInfo }) {
+function CV({ generalInfo, educationInfo, practicalInfo }) {
   return (
     <>
       <div>
@@ -16,6 +16,18 @@ function CV({ generalInfo, educationInfo }) {
             <p>{item.degree}</p>
             <p>{item.startDate}</p>
             <p>{item.endDate}</p>
+          </div>
+        ))}
+      </div>
+      <div>
+        <h2>Practical Info</h2>
+        {practicalInfo.map((item) => (
+          <div key={item.uniqueId}>
+            <p>{item.company}</p>
+            <p>{item.position}</p>
+            <p>{item.startDate}</p>
+            <p>{item.endDate}</p>
+            <p>{item.location}</p>
           </div>
         ))}
       </div>

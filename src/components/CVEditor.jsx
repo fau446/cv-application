@@ -1,5 +1,12 @@
 // Should be given a prop by App
-function CVEditor({ onChange, onSubmit, addEducation, educationInfo }) {
+function CVEditor({
+  onChange,
+  onSubmit,
+  addEducation,
+  addPractical,
+  educationInfo,
+  practicalInfo,
+}) {
   return (
     <form onSubmit={onSubmit}>
       <GeneralSection onChange={onChange} />
@@ -7,6 +14,11 @@ function CVEditor({ onChange, onSubmit, addEducation, educationInfo }) {
         onChange={onChange}
         addEducation={addEducation}
         educationInfo={educationInfo}
+      />
+      <PracticalSection
+        onChange={onChange}
+        addPractical={addPractical}
+        practicalInfo={practicalInfo}
       />
 
       <button>Submit</button>
@@ -99,32 +111,64 @@ function EducationSection({ onChange, addEducation, educationInfo }) {
     </div>
   );
 }
-/*
-function PracticalSection() {
+
+function PracticalSection({ onChange, addPractical, practicalInfo }) {
   return (
-    <>
+    <div>
       <h2>Practical Information</h2>
-      <CVField labelName="company" fieldName="Company Name" dataType="text" />
-      <CVField
-        labelName="position"
-        fieldName="Position Title"
-        dataType="text"
-      />
-      <CVField
-        labelName="start-date-practical"
-        fieldName="Start Date"
-        dataType="date"
-      />
-      <CVField
-        labelName="end-date-practical"
-        fieldName="End Date"
-        dataType="date"
-      />
-      <CVField labelName="location" fieldName="Location" dataType="text" />
-    </>
+      <div>
+        {practicalInfo.map((item) => (
+          <div key={item.uniqueId}>
+            <CVField
+              labelName="company"
+              fieldName="Company Name"
+              dataType="text"
+              onChange={onChange}
+              name="company"
+              dataid={item.uniqueId}
+            />
+            <CVField
+              labelName="position"
+              fieldName="Position Title"
+              dataType="text"
+              onChange={onChange}
+              name="position"
+              dataid={item.uniqueId}
+            />
+            <CVField
+              labelName="start-date-practical"
+              fieldName="Start Date"
+              dataType="text"
+              onChange={onChange}
+              name="start-date-practical"
+              dataid={item.uniqueId}
+            />
+            <CVField
+              labelName="end-date-practical"
+              fieldName="End Date"
+              dataType="text"
+              onChange={onChange}
+              name="end-date-practical"
+              dataid={item.uniqueId}
+            />
+            <CVField
+              labelName="location"
+              fieldName="Location"
+              dataType="text"
+              onChange={onChange}
+              name="location"
+              dataid={item.uniqueId}
+            />
+          </div>
+        ))}
+      </div>
+      <button type="button" onClick={addPractical}>
+        Add Work
+      </button>
+    </div>
   );
 }
-*/
+
 function CVField({
   labelName,
   fieldName,
