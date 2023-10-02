@@ -152,7 +152,15 @@ function App() {
     for (let i = 0; i < newEducationInfo.length; i++) {
       if (e.target.dataset.id === newEducationInfo[i].uniqueId) {
         newEducationInfo.splice(i, 1);
-        console.log(newEducationInfo);
+        setChange();
+      }
+    }
+  }
+
+  function removePractical(e) {
+    for (let i = 0; i < newPracticalInfo.length; i++) {
+      if (e.target.dataset.id === newPracticalInfo[i].uniqueId) {
+        newPracticalInfo.splice(i, 1);
         setChange();
       }
     }
@@ -168,6 +176,7 @@ function App() {
         educationInfo={educationInfo}
         practicalInfo={practicalInfo}
         removeEducation={removeEducation}
+        removePractical={removePractical}
       />
       <CV
         generalInfo={generalInfo}

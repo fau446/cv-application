@@ -7,6 +7,7 @@ function CVEditor({
   educationInfo,
   practicalInfo,
   removeEducation,
+  removePractical,
 }) {
   return (
     <form onSubmit={onSubmit}>
@@ -21,6 +22,7 @@ function CVEditor({
         onChange={onChange}
         addPractical={addPractical}
         practicalInfo={practicalInfo}
+        removePractical={removePractical}
       />
 
       <button>Submit</button>
@@ -126,7 +128,12 @@ function EducationSection({
   );
 }
 
-function PracticalSection({ onChange, addPractical, practicalInfo }) {
+function PracticalSection({
+  onChange,
+  addPractical,
+  practicalInfo,
+  removePractical,
+}) {
   return (
     <div>
       <h2>Practical Information</h2>
@@ -173,6 +180,13 @@ function PracticalSection({ onChange, addPractical, practicalInfo }) {
               name="location"
               dataid={item.uniqueId}
             />
+            <button
+              type="button"
+              onClick={removePractical}
+              data-id={item.uniqueId}
+            >
+              Remove Work
+            </button>
           </div>
         ))}
       </div>
