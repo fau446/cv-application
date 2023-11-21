@@ -5,9 +5,10 @@ function EducationSection({
   addEducation,
   educationInfo,
   removeEducation,
+  className,
 }) {
   return (
-    <div>
+    <div className={className}>
       <h2>Education Information</h2>
 
       <div>

@@ -5,9 +5,10 @@ function PracticalSection({
   addPractical,
   practicalInfo,
   removePractical,
+  className,
 }) {
   return (
-    <div>
+    <div className={className}>
       <h2>Practical Information</h2>
       <div>
         {practicalInfo.map((item) => (

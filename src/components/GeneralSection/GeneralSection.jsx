@@ -1,8 +1,8 @@
 import CVField from "../CVField/CVField";
 
-function GeneralSection({ onChange }) {
+function GeneralSection({ onChange, className }) {
   return (
-    <>
+    <div className={className}>
       <h2>General Information</h2>
       <CVField
         labelName="name"
@@ -32,7 +32,7 @@ function GeneralSection({ onChange }) {
         onChange={onChange}
         name="address"
       />
-    </>
+    </div>
   );
 }
 
