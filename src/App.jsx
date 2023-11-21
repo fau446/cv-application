@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
-import CVEditor from "./components/CVEditor";
-import CV from "./components/CV";
+import CVEditor from "./components/CVEditor/CVEditor";
+import CV from "./components/CV/CV";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
