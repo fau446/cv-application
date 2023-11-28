@@ -3,6 +3,7 @@ import { useState } from "react";
 import CVEditor from "./components/CVEditor/CVEditor";
 import CV from "./components/CV/CV";
 import { v4 as uuidv4 } from "uuid";
+import styles from "./App.module.css";
 
 function App() {
   const [generalInfo, setGeneralInfo] = useState({
@@ -167,7 +168,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className={styles.main}>
       <CVEditor
         onChange={handleChange}
         onSubmit={submitForm}
@@ -178,12 +179,14 @@ function App() {
         removeEducation={removeEducation}
         removePractical={removePractical}
       />
-      <CV
-        generalInfo={generalInfo}
-        educationInfo={educationInfo}
-        practicalInfo={practicalInfo}
-      />
-    </>
+      <div>
+        <CV
+          generalInfo={generalInfo}
+          educationInfo={educationInfo}
+          practicalInfo={practicalInfo}
+        />
+      </div>
+    </div>
   );
 }
 

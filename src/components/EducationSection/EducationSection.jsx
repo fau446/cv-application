@@ -1,4 +1,5 @@
 import CVField from "../CVField/CVField";
+import styles from "../../styles/SectionStyling.module.css";
 
 function EducationSection({
   onChange,
@@ -9,11 +10,10 @@ function EducationSection({
 }) {
   return (
     <div className={className}>
-      <h2>Education Information</h2>
-
-      <div>
+      <h2 className={styles.formHeader}>Education Information</h2>
+      <div className={styles.forms}>
         {educationInfo.map((item) => (
-          <div key={item.uniqueId}>
+          <div className={styles.form} key={item.uniqueId}>
             <CVField
               labelName="school"
               fieldName="School Name"
@@ -47,6 +47,7 @@ function EducationSection({
               dataid={item.uniqueId}
             />
             <button
+              className={styles.removeButton}
               type="button"
               onClick={removeEducation}
               data-id={item.uniqueId}
@@ -56,7 +57,7 @@ function EducationSection({
           </div>
         ))}
       </div>
-      <button type="button" onClick={addEducation}>
+      <button className={styles.addButton} type="button" onClick={addEducation}>
         Add School
       </button>
     </div>

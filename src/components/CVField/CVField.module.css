@@ -1,0 +1,12 @@
+.CVField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.textInput {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(232, 232, 232);
+}

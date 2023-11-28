@@ -1,4 +1,5 @@
 import CVField from "../CVField/CVField";
+import styles from "../../styles/SectionStyling.module.css";
 
 function PracticalSection({
   onChange,
@@ -9,10 +10,10 @@ function PracticalSection({
 }) {
   return (
     <div className={className}>
-      <h2>Practical Information</h2>
-      <div>
+      <h2 className={styles.formHeader}>Work Experience</h2>
+      <div className={styles.forms}>
         {practicalInfo.map((item) => (
-          <div key={item.uniqueId}>
+          <div className={styles.form} key={item.uniqueId}>
             <CVField
               labelName="company"
               fieldName="Company Name"
@@ -54,6 +55,7 @@ function PracticalSection({
               dataid={item.uniqueId}
             />
             <button
+              className={styles.removeButton}
               type="button"
               onClick={removePractical}
               data-id={item.uniqueId}
@@ -63,7 +65,7 @@ function PracticalSection({
           </div>
         ))}
       </div>
-      <button type="button" onClick={addPractical}>
+      <button className={styles.addButton} type="button" onClick={addPractical}>
         Add Work
       </button>
     </div>

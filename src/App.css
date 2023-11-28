@@ -1,3 +1,18 @@
+body {
+  background-color: rgb(243, 243, 243);
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
 .hidden {
   display: none;
+}
+
+.normal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
