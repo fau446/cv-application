@@ -106,6 +106,7 @@ function App() {
     }
 
     e.preventDefault();
+    setChange();
   }
 
   function setChange() {
@@ -118,11 +119,6 @@ function App() {
 
     setEducationInfo(newEducationInfo);
     setPracticalInfo(newPracticalInfo);
-  }
-
-  function submitForm(e) {
-    e.preventDefault();
-    setChange();
   }
 
   function addEducation() {
@@ -171,7 +167,6 @@ function App() {
     <div className={styles.main}>
       <CVEditor
         onChange={handleChange}
-        onSubmit={submitForm}
         addEducation={addEducation}
         addPractical={addPractical}
         educationInfo={educationInfo}

@@ -6,7 +6,6 @@ import styles from "./CVEditor.module.css";
 
 function CVEditor({
   onChange,
-  onSubmit,
   addEducation,
   addPractical,
   educationInfo,
@@ -71,7 +70,7 @@ function CVEditor({
           )}
         </h3>
       </div>
-      <form className={styles.formSection} onSubmit={onSubmit}>
+      <form className={styles.formSection}>
         {activeTab === "General" ? (
           <GeneralSection onChange={onChange} className="normal" />
         ) : (
@@ -111,8 +110,6 @@ function CVEditor({
             className="hidden"
           />
         )}
-
-        <button className={styles.submitButton}>Submit</button>
       </form>
     </div>
   );
