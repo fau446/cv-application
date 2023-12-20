@@ -14,7 +14,6 @@
 }
 
 .generalSection {
-  /* Put line divider at the bottom of general section */
   padding: 0 0 5px 0;
   border-bottom: 1px solid black;
 }
