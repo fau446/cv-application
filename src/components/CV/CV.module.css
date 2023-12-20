@@ -1,0 +1,48 @@
+.cv {
+  background-color: white;
+  height: 987px;
+  width: 700px;
+  margin: 50px 0;
+  padding: 35px;
+  box-shadow: 10px 5px 20px grey;
+}
+
+.generalSection,
+.educationSection,
+.practicalSection {
+  margin: 0 0 15px 0;
+}
+
+.generalSection {
+  /* Put line divider at the bottom of general section */
+  padding: 0 0 5px 0;
+  border-bottom: 1px solid black;
+}
+
+.name {
+  font-size: 2em;
+  font-weight: bold;
+  padding: 0 0 5px 0;
+}
+
+.header {
+  border-bottom: 1px solid black;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.entry {
+  margin: 0 0 10px 0;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  display: flex;
+  gap: 5px;
+}
